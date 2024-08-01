@@ -8,9 +8,6 @@
 
 ![](https://count.getloli.com/get/@DDS-Derek.xiaoya-alist.readme?theme=rule34)
 
-> [!IMPORTANT]
-> 脚本作者 DDSRem 维护精力有限，脚本更新速度将放缓！
-
 - [main.sh](#mainsh)
   - [使用](#使用)
   - [功能列表](#功能列表)
@@ -69,13 +66,14 @@ bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/DDS-Derek/xia
 安装 小雅Alist -> 1 1
 安装 小雅Alist-TVBox -> 5 1
 安装/更新 小雅助手（xiaoyahelper）-> 4 1
-安装 Onelist -> 6 1
+安装 115清理助手 -> 6 1
+安装 Onelist -> 8 3 1
 安装 Portainer -> 8 1 1
 安装 Emby全家桶（一键） -> 2 1
 安装 Jellyfin全家桶（一键） -> 3 1
 安装 Resilio-Sync（单独） -> 2 5 1
 安装 Auto_Symlink -> 8 2 1
-安装 CasaOS -> 8 4 1
+安装 CasaOS -> 8 5 1
 安装 小雅元数据定时爬虫 -> 2 9 1
 ——————————————————————————————Emby手动全家桶配置————————————————————————————————————
 单独 下载并解压 全部元数据 -> 2 2 1
@@ -108,7 +106,8 @@ bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/DDS-Derek/xia
 更新 小雅Alist-TVBox -> 5 2
 更新 小雅Alist -> 1 2
 更新 Resilio-Sync（单独） -> 2 5 2
-更新 Onelist -> 6 2
+更新 115清理助手 -> 6 2
+更新 Onelist -> 8 3 2
 更新 Portainer -> 8 1 2
 更新 Auto_Symlink -> 8 2 2
 更新 小雅元数据定时爬虫 -> 2 9 2
@@ -119,16 +118,17 @@ bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/DDS-Derek/xia
 卸载 Resilio-Sync（单独） -> 2 5 3
 卸载 小雅助手（xiaoyahelper）-> 4 3
 卸载 小雅Alist-TVBox -> 5 3
-卸载 Onelist -> 6 3
+卸载 115清理助手 -> 6 3
+卸载 Onelist -> 8 3 3
 卸载 Portainer -> 8 1 3
 卸载 Auto_Symlink -> 8 2 3
-卸载 CasaOS -> 8 4 2
+卸载 CasaOS -> 8 5 2
 卸载 小雅元数据定时爬虫 -> 2 9 3
 ————————————————————————————————Docker Compose—————————————————————————————————————
 安装 小雅及全家桶 -> 7 1
 卸载 小雅及全家桶 -> 7 2
 ——————————————————————————————————————系统工具——————————————————————————————————————
-查看系统磁盘挂载 -> 8 3
+查看系统磁盘挂载 -> 8 4
 ———————————————————————————————————————其他———————————————————————————————————————
 一次性运行 小雅助手（xiaoyahelper）-> 4 2
 创建/删除 定时同步更新数据（小雅alist启动时拉取的数据）-> 1 4
@@ -147,11 +147,18 @@ Docker镜像源选择 -> 9 6
 
 ## 相关地址
 
-[https://github.com/DDS-Derek/xiaoya-alist](https://github.com/DDS-Derek/xiaoya-alist)
-
-小雅官方 [Telegram](https://t.me/xiaoyaliu00) 交流群
+- [https://github.com/DDS-Derek/xiaoya-alist](https://github.com/DDS-Derek/xiaoya-alist)
+- [https://hub.docker.com/r/ddsderek/xiaoya-emd](https://hub.docker.com/r/ddsderek/xiaoya-emd)
+- [https://hub.docker.com/r/ddsderek/xiaoya-proxy](https://hub.docker.com/r/ddsderek/xiaoya-proxy)
+- [https://hub.docker.com/r/ddsderek/xiaoya-cron](https://hub.docker.com/r/ddsderek/xiaoya-cron)
+- [https://hub.docker.com/r/ddsderek/xiaoya-glue](https://hub.docker.com/r/ddsderek/xiaoya-glue)
+- [https://hub.docker.com/r/ddsderek/xiaoya-115cleaner](https://hub.docker.com/r/ddsderek/xiaoya-115cleaner)
+- 小雅官方 [Telegram](https://t.me/xiaoyaliu00) 交流群
 
 ## 通用兼容性测试报告
+
+> [!NOTE]
+> ✅代表测试通过且兼容；❌代表不兼容；🚧代表未经过充分测试兼容性不确定！
 
 |             软件名称             | x86-64  \| amd64 | arm64 \| arm64v8 | armhf \| armv7 |
 | :------------------------------: | :--------------: | :---------------: | :-------------: |
@@ -163,6 +170,8 @@ Docker镜像源选择 -> 9 6
 |           Onelist            |        ✅         |         ✅         |        ✅        |
 | 小雅元数据爬虫（xiaoya-emd） |        ✅         |         ✅         |        ✅        |
 | 小雅Cron容器（xiaoya-cron）  |        ✅         |         ✅         |        ✅        |
+| 小雅代理容器（xiaoya-proxy）  |        ✅         |         ✅         |        ✅        |
+| 115清理助手（xiaoya-115cleaner）  |        ✅         |         ✅         |        ✅        |
 
 |    系统名称     | main.sh | emby_config_editor.sh |
 | :-------------: | :-----: | :-------------------: |
@@ -186,14 +195,16 @@ Docker镜像源选择 -> 9 6
 |     EulerOS     |    ✅    |           ✅           |
 |  Amazon Linux   |    ✅    |           ✅           |
 |     Alpine      |    ✅    |           ✅           |
+|      MacOS      |    🚧    |           🚧           |
 |     UnRaid      |    ✅    |           ✅           |
 | OpenMediaVault  |    ✅    |           ✅           |
 |      QNAP       |    ✅    |           ✅           |
 |     OpenWRT     |    ✅    |           ✅           |
 |    Synology     |    ✅    |           ✅           |
-|  TrueNAS CORE   |    ✅    |           ✅           |
-|  TrueNAS SCALE  |    ✅    |           ✅           |
-|     UGREEN      |    ✅    |           ✅           |
+|  TrueNAS CORE   |    🚧    |           🚧           |
+|  TrueNAS SCALE  |    🚧    |           🚧           |
+|      UGOS       |    ✅    |           ✅           |
+|     UGOS Pro    |    ✅    |           ✅           |
 |   LibreELEC     |    ❌    |           ❌           |
 
 ## 免责声明
